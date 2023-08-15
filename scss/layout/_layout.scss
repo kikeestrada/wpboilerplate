@@ -1,0 +1,10 @@
+*,
+*::before,
+*::after {
+	box-sizing							: border-box;
+}
+
+::selection {
+	color: white;
+	background: #9e852e;
+}
