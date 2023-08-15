@@ -12,6 +12,6 @@
    */
 ?>
     </main>
-    <script type="module" src="<?php echo get_theme_file_uri(); ?>/scripts.js?ver=1.0.3"></script>
+    <?php wp_footer(); ?>
 	</body>
 </html>

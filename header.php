@@ -18,31 +18,22 @@
 <!--[if IE 8]><html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
-  <meta name="viewport" content="initial-scale=1.0, width=device-width">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="viewport" content="width = 320, initial-scale = 2.3, user-scalable = no">
-  <meta name="viewport" content="width = device-width, initial-scale = 2.3, user-scalable = no">
-  <meta name="viewport" content="width = device-width, initial-scale = 2.3, minimum-scale = 1, maximum-scale = 5">
-  <meta name="viewport" content="width = 320, initial-scale = 2.3, user-scalable = no">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-compatible" content="IE=11">
-  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9">
-  <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7">
-  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <!-- Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes">
+  <!-- IE Compatibility -->
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <!-- Apple Mobile Web App Settings -->
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Miscellaneous -->
   <meta name="format-detection" content="telephone=no">
   <meta name="MobileOptimized" content="width">
   <meta name="HandheldFriendly" content="true">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 	<title><?php wp_title( ' | ', true, 'right' ); ?> <?php bloginfo( 'name' ); ?></title>
+  <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 	<main>
