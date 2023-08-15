@@ -7,7 +7,7 @@
 </head>
 <body> 
     <main>
-        <h1>Wordpress Boilerplate</h1>
+        <h1>Wordpress Boilerplate Enrique Estrada</h1>
     </main>    
 </body>
 </html>
