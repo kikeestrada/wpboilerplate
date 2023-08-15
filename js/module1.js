@@ -1,3 +1,3 @@
 export const module1 = () => {
-  console.log('Hello World');	
+  console.log('Hello World Module 1');
 };
