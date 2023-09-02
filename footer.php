@@ -11,7 +11,7 @@
    * @since Twenty Twenty-One 1.0
    */
 ?>
-    </main>
-    <?php wp_footer(); ?>
+	</main>
+	<?php wp_footer(); ?>
 	</body>
 </html>
