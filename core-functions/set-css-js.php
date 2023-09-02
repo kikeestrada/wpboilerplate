@@ -63,16 +63,17 @@ function remove_parentstyles_and_enqueue_scripts()
         null
     );
 
-    // Enqueue script.js with versioning
+    // Enqueue script.js with versioning and jQuery dependency
     $themescriptpath = get_stylesheet_directory() . "/script.js";
     if (file_exists($themescriptpath)) {
         wp_enqueue_script(
             "custom-script",
             get_stylesheet_directory_uri() . "/script.js" . "?v=" . filemtime($themescriptpath),
-            [], // Add dependencies if needed, like ['jquery']
+            ['jquery'], // jQuery como dependencia
             null,
-            true // Loads the script in the footer
+            true // Carga el script en el footer
         );
     }
 }
 add_action("wp_enqueue_scripts", "remove_parentstyles_and_enqueue_scripts", 20);
+
