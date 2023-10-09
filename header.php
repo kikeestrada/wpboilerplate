@@ -38,3 +38,5 @@
 </head>
 <body <?php body_class(); ?>>
 	<main>
+		<div><?php dynamic_sidebar( 'top-widget' );?></div>
+
