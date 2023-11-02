@@ -1,15 +1,3 @@
-/*
-Theme Name: wpboilerplate
-Theme URI: https://wordpress.org/themes/twentytwentyone/
-Template: twentytwentyone
-Author: the WordPress team
-Author URI: https://wordpress.org/
-Description: This is a Boilerplate developed by Enrique Estrada to create Wordpress Themes from scratch
-Version: 1.0.0
-Updated: 2023-08-14 23:23:41
-*/
-
-
 /*here start de website template core*/
 @import "core/normalize.scss";
 @import "core/functions";
@@ -29,3 +17,6 @@ $breakpoints 		:
 @import "components/components.scss";
 @import "hacks/hacks";
 /*here finish de website template core*/ 
+body{
+	background-color: red;
+}

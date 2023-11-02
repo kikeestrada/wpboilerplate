@@ -1,79 +1,41 @@
 <?php
 
-// Exit if accessed directly
-if (!defined("ABSPATH")) {
-  exit();
+// Salir si se intenta acceder directamente al archivo
+if (!defined('ABSPATH')) {
+    exit;
 }
 
-// BEGIN ENQUEUE PARENT ACTION
-// AUTO GENERATED - Do not modify or remove comment markers above or below:
+// Encolar estilos y scripts personalizados del tema hijo
+function child_theme_enqueue_styles_and_scripts() {
+    // Desencolar estilos del tema padre
+    wp_dequeue_style('twenty-twenty-one-style');
+    wp_deregister_style('twenty-twenty-one-style');
 
-if (!function_exists("chld_thm_cfg_locale_css")):
-  function chld_thm_cfg_locale_css($uri)
-  {
-      if (
-          empty($uri) &&
-          is_rtl() &&
-          file_exists(get_template_directory() . "/rtl.css")
-      ) {
-          $uri = get_template_directory_uri() . "/rtl.css";
-      }
-      return $uri;
-  }
-endif;
-add_filter("locale_stylesheet_uri", "chld_thm_cfg_locale_css");
+    // Encolar CSS personalizado del tema hijo
+    $child_theme_css_path = get_stylesheet_directory() . '/theme-styles.css';
+    if (file_exists($child_theme_css_path)) {
+        wp_enqueue_style(
+            'child-theme-styles', // Handle
+            get_stylesheet_directory_uri() . '/theme-styles.css', // Ruta al archivo CSS del tema hijo
+            [], // Un array de estilos de los que depende
+            filemtime($child_theme_css_path) // Número de versión para el control de cache
+        );
+    }
 
-if (!function_exists("child_theme_configurator_css")):
-  function child_theme_configurator_css()
-  {
-      wp_enqueue_style(
-          "chld_thm_cfg_child",
-          trailingslashit(get_stylesheet_directory_uri()) . "style.css",
-          [
-              "twenty-twenty-one-style",
-              "twenty-twenty-one-style",
-              "twenty-twenty-one-print-style",
-          ]
-      );
-  }
-endif;
-add_action("wp_enqueue_scripts", "child_theme_configurator_css", 10);
-
-
-function remove_parentstyles_and_enqueue_scripts()
-{
-    wp_dequeue_style("twenty-twenty-one-style", [], null);
-    wp_dequeue_style("chld_thm_cfg_child", [], null);
-
-    // Custom theme CSS path
-    $themecsspath = get_stylesheet_directory() . "/style.css";
-    wp_enqueue_style(
-        "core",
-        get_theme_file_uri() . "/style.css" . "?v=" . filemtime($themecsspath),
-        [],
-        null
-    );
-
-    // Child theme CSS path
-    $themecsspath2 = get_stylesheet_directory() . "/style.css";
-    wp_enqueue_style(
-        "child",
-        get_stylesheet_uri() . "?v=" . filemtime($themecsspath2),
-        [],
-        null
-    );
-
-    // Enqueue script.js with versioning and jQuery dependency
-    $themescriptpath = get_stylesheet_directory() . "/script.js";
-    if (file_exists($themescriptpath)) {
+    // Encolar JS personalizado del tema hijo
+    $child_theme_js_path = get_stylesheet_directory() . '/theme-scripts.js';
+    if (file_exists($child_theme_js_path)) {
         wp_enqueue_script(
-            "custom-script",
-            get_stylesheet_directory_uri() . "/script.js" . "?v=" . filemtime($themescriptpath),
-            ['jquery'], // jQuery como dependencia
-            null,
-            true // Carga el script en el footer
+            'child-theme-scripts', // Handle
+            get_stylesheet_directory_uri() . '/theme-scripts.js', // Ruta al archivo JS del tema hijo
+            ['jquery'], // Un array de scripts de los que depende
+            filemtime($child_theme_js_path), // Número de versión para el control de cache
+            true // Cargar en el footer
         );
     }
 }
-add_action("wp_enqueue_scripts", "remove_parentstyles_and_enqueue_scripts", 20);
 
+// Agregamos la acción con prioridad 20 para asegurarnos de que se ejecute después de que el tema padre haya encolado sus estilos
+add_action('wp_enqueue_scripts', 'child_theme_enqueue_styles_and_scripts', 20);
+
+?>
