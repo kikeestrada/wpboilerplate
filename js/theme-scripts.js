@@ -1,5 +1,5 @@
 ;
-console.log('Hello WordPress 321');
+console.log('Hello WordPress');
 import {module1} from './components/module1';
 import {module2} from './components/module2';
 (()=>{
