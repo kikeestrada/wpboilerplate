@@ -1,6 +1,4 @@
-
 <?php
-
 function top_widget() {
     register_sidebar( array(
         'name' => __( 'Top Widget', 'my_theme' ),

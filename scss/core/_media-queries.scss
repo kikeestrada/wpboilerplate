@@ -1,6 +1,5 @@
 /// Devuelve true si el breakpoint es parte del core
 /// @group mq
-
 /// @param   {number} $bp - breakpoint
 /// @example scss
 ///    .elemento {
@@ -16,7 +15,6 @@
     @return false
   }
 }
-
 /// Devuelve true si el breakpint es válido (em, rem, px)
 /// @group   mq
 /// @param   {number} $bp - breakpoint a verificar.
@@ -27,14 +25,12 @@
     @return false
   }
 }
-
 /// Obtiene un breakpoint del core
 /// @group   mq
 /// @param   {number} $bp - breakpoint a obtener.
 @function getBp($bp){
   @return map-get($breakpoints,$bp)
 }
-
 /// Convierte un valor en em o rem a px
 /// @group   mq
 /// @param   {number} $value - var a convertir a pixeles.
@@ -53,7 +49,6 @@
     @error "La funcion toPx() solo acepta numeros en em o rem"
   }
 }
-
 /// From (mayor que $bp)
 /// @group   mq
 /// @param   {number} $from - breakpoint
@@ -85,7 +80,6 @@
     @error 'El mixin from() solo puede recibir un breakpoint del Core (#{map-keys($breakpoints)}) o un número en px, em o rem'
   }
 }
-
 /// To (es menor que $to)
 /// @group   mq
 /// @param   {number} $to - breakpoint
@@ -114,10 +108,8 @@
     @error 'El mixin to() solo puede recibir un breakpoint del Core (#{map-keys($breakpoints)}) o un número en px, em o rem'
   }
 }
-
 /// fromTo la regla se ejecuta entre ambos breakpoints.
 /// @group   mq
-
 /// @param   {number} $from - breakpoint desde que medida se iniciara la regla.
 /// @param   {number} $to - breakpoint hasta que medida se ejecutara la regla.
 /// @example scss
@@ -138,7 +130,6 @@
       @error "El segundo argumento del mixin fromTo debe ser mayor que el primero"
     }
   }
-
   // Si solo $from es breakpoint del core
   @else if isCoreBreakpoint($from) and not isCoreBreakpoint($to){
     @if isValidBreakpoint($to) {
@@ -153,7 +144,6 @@
       @error "El segundo argumento del mixin fromTo() debe ser un breakpoint del Core (#{map-keys($breakpoints)}) o un número en px, em o rem"
     }
   }
-
   // Si solo $to es breakpoint del core
   @else if not isCoreBreakpoint($from) and isCoreBreakpoint($to) {
     @if isValidBreakpoint($from) {
@@ -169,7 +159,6 @@
       @error "El primer argumento del mixin fromTo() debe ser un breakpoint del Core (#{map-keys($breakpoints)}) o un número en px, em o rem"
     }
   }
-
   // Si no son breakpoints del core pero son breakpoints válidos (px, em, rem)
   @else if isValidBreakpoint($from) and isValidBreakpoint($to){
     @if toPx($to) > toPx($from) {
@@ -180,7 +169,6 @@
       @error "El segundo argumento del mixin fromTo debe ser mayor que el primero"
     }
   }
-
   // Si al menos hay un breakpoint inválido
   @else {
     @error 'Los argumentos del mixin fromTo() deben ser breakpoints del Core (#{map-keys($breakpoints)}) o números en px, em o rem';
